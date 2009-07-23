@@ -6,7 +6,7 @@ Bundle-Version: 1.0.0
 Bundle-SymbolicName: de.bughome.gmftext; singleton:=true
 Eclipse-RegisterBuddy: org.eclipse.xtext.log4j
 Bundle-ActivationPolicy: lazy
-Require-Bundle:  org.eclipse.xtext,
+Require-Bundle: org.eclipse.xtext,
  org.eclipse.xtext.generator;resolution:=optional,
  de.itemis.xtext.antlr;resolution:=optional,
  org.apache.commons.logging;resolution:=optional,
@@ -15,5 +15,17 @@ Require-Bundle:  org.eclipse.xtext,
  org.eclipse.emf.mwe.utils;resolution:=optional,
  org.eclipse.emf.mwe.core;resolution:=optional,
  com.ibm.icu;resolution:=optional,
- org.eclipse.xtext.xtend;resolution:=optional
+ org.eclipse.xtext.xtend;resolution:=optional,
+ org.eclipse.xtext.util,
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.common,
+ org.antlr.runtime
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: de.bughome,
+ de.bughome.services,
+ de.bughome.gmfText,
+ de.bughome.gmfText.impl,
+ de.bughome.gmfText.util,
+ de.bughome.parseTreeConstruction,
+ de.bughome.parser.antlr,
+ de.bughome.validation

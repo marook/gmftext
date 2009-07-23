@@ -17,43 +17,23 @@
  * along with gmftext.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-grammar de.bughome.GmfText with org.eclipse.xtext.common.Terminals
+package de.bughome.gmftext.generator.template.gmftool;
 
-generate gmfText "http://www.bughome.de/GmfText"
+import org.eclipse.gmf.tooldef.ToolRegistry;
+import org.eclipse.xtend.XtendFacade;
 
-import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+import de.bughome.gmfText.Model;
 
-Model:
-	(imports += Import)*
-	(elements += Type)*;
+public final class GMFToolConvertUtil {
 	
-Import :
-	'import' importURI=STRING;
+	private GMFToolConvertUtil(){
+		throw new IllegalStateException();
+	}
 	
-Type:
-	Node | Edge;
+	public static ToolRegistry transformModelToGmfTool(final Model model) {
+		final XtendFacade f =
+			XtendFacade.create("de::bughome::gmftext::generator::template::gmftool::GMFToolConvert");
+		return (ToolRegistry) f.call("transformModelToGmfTool", model);
+	}
 
-Node:
-	"node" name = ID "{"
-		"binding" binding = NodeBinding
-	"}";
-	
-NodeBinding:
-	ClassNodeBinding;
-	
-ClassNodeBinding:
-	"class" "{"
-		"eclass" ecoreClass = [ecore::EClass]
-	"}";
-	
-Edge:
-	"edge" name = ID "{"
-		"binding" binding = EdgeBinding
-	"}";
-
-EdgeBinding:
-	ClassEdgeBinding;
-	
-ClassEdgeBinding:
-	"class" "{"
-	"}";
+}
