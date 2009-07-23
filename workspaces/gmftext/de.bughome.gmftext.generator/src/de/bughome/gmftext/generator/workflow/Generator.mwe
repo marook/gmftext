@@ -29,6 +29,9 @@
 		<register class="de.bughome.GmfTextStandaloneSetup"/>
 	</component>
 	
+	 <!--============================================================
+	 	transform all models
+	 -->
 	 <component class="org.eclipse.xtend.XtendComponent">
 	 	<metaModel class="org.eclipse.xtend.typesystem.emf.EmfMetaModel">
 	 		<metaModelPackage value="de.bughome.gmfText.GmfTextPackage" />
@@ -41,9 +44,29 @@
 		<outputSlot value="gmfToolModel" />
 	</component>
 	
+	 <component class="org.eclipse.xtend.XtendComponent">
+	 	<metaModel class="org.eclipse.xtend.typesystem.emf.EmfMetaModel">
+	 		<metaModelPackage value="de.bughome.gmfText.GmfTextPackage" />
+	 	</metaModel>
+	 	<metaModel class="org.eclipse.xtend.typesystem.emf.EmfMetaModel">
+	 		<metaModelPackage value="org.eclipse.gmf.gmfgraph.GMFGraphPackage" />
+	 	</metaModel>
+	 
+		<invoke value="de::bughome::gmftext::generator::template::gmfgraph::GMFGraphConvert::toCanvas(model)"/>
+		<outputSlot value="gmfGraphModel" />
+	</component>
+	
+	 <!--============================================================
+	 	serialize all models
+	 -->
 	<component class="org.eclipse.emf.mwe.utils.Writer">
 		<uri value="src-gen/model/GmfTool.gmftool" />
 		<modelSlot value="gmfToolModel" />
+	</component>
+
+	<component class="org.eclipse.emf.mwe.utils.Writer">
+		<uri value="src-gen/model/GmfGraph.gmfgraph" />
+		<modelSlot value="gmfGraphModel" />
 	</component>
 	
 	<!--
