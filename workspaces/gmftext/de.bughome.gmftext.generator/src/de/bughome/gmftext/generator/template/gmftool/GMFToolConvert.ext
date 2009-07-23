@@ -21,4 +21,12 @@ import tooldef;
 import gmfText;
 
 create ToolRegistry toToolRegistry(Model model):
-	palette.setTitle('Bla');
+	setPalette(toPalette(model));
+
+create Palette toPalette(Model model):
+	setTitle('MyPalette') ->
+	model.elements.forAll(t | tools.add(toCreationTool(t.name, "Creates a new " + t.name)));
+
+create CreationTool toCreationTool(String title, String desc):
+	setTitle(title) ->
+	setDescription(desc);
