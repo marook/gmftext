@@ -31,10 +31,6 @@
 	
 	 <component class="org.eclipse.xtend.XtendComponent">
 	 	<metaModel class="org.eclipse.xtend.typesystem.emf.EmfMetaModel">
-	 		<metaModelPackage value="org.eclipse.emf.ecore.EcorePackage" />
-	 	</metaModel>
-
-	 	<metaModel class="org.eclipse.xtend.typesystem.emf.EmfMetaModel">
 	 		<metaModelPackage value="de.bughome.gmfText.GmfTextPackage" />
 	 	</metaModel>
 	 	<metaModel class="org.eclipse.xtend.typesystem.emf.EmfMetaModel">
