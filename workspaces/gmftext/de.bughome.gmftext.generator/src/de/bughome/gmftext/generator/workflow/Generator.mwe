@@ -41,6 +41,11 @@
 		<outputSlot value="gmfToolModel" />
 	</component>
 	
+	<component class="org.eclipse.emf.mwe.utils.Writer">
+		<uri value="src-gen/model/GmfTool.gmftool" />
+		<modelSlot value="gmfToolModel" />
+	</component>
+	
 	<!--
 	<component class="org.eclipse.xpand2.Generator">
 		<metaModel class="org.eclipse.xtend.typesystem.emf.EmfRegistryMetaModel"/>
