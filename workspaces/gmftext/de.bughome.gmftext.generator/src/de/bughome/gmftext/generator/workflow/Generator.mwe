@@ -79,7 +79,8 @@
 	-->
 	 
 	<!-- TODO make sure that the resource cross references are stored with
-	platform dependent paths -->
+	platform dependent paths 
+	@see http://github.com/marook/gmftext/issues#issue/1 -->
 	<component class="org.eclipse.emf.mwe.utils.Writer">
 		<uri value="GmfTool.gmftool" />
 		<modelSlot value="gmfToolModel" />
