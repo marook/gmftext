@@ -25,5 +25,6 @@ import gmfText;
 create Mapping toMapping(Model model, ToolRegistry toolRegistry, gmfgraph::Canvas canvas):
 	setDiagram(toCanvasMapping(toolRegistry, canvas));
 
-create CanvasMapping toCanvasMapping(tooldef::ToolRegistry toolRegistry, gmfgraph::Canvas canvas):
-	this;
+create mappings::CanvasMapping toCanvasMapping(tooldef::ToolRegistry toolRegistry, gmfgraph::Canvas canvas):
+	setPalette(toolRegistry.palette) ->
+	setDiagramCanvas(canvas);

@@ -74,21 +74,24 @@
 		<outputSlot value="gmfMapModel" />
 	</component>
 	
-	 <!--============================================================
-	 	serialize all models
-	 -->
+	<!--============================================================
+		serialize all models
+	-->
+	 
+	<!-- TODO make sure that the resource cross references are stored with
+	platform dependent paths -->
 	<component class="org.eclipse.emf.mwe.utils.Writer">
-		<uri value="src-gen/model/GmfTool.gmftool" />
+		<uri value="GmfTool.gmftool" />
 		<modelSlot value="gmfToolModel" />
 	</component>
 
 	<component class="org.eclipse.emf.mwe.utils.Writer">
-		<uri value="src-gen/model/GmfGraph.gmfgraph" />
+		<uri value="GmfGraph.gmfgraph" />
 		<modelSlot value="gmfGraphModel" />
 	</component>
 	
 	<component class="org.eclipse.emf.mwe.utils.Writer">
-		<uri value="src-gen/model/GmfMap.gmfmap" />
+		<uri value="GmfMap.gmfmap" />
 		<modelSlot value="gmfMapModel" />
 	</component>
 	
