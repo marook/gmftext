@@ -25,11 +25,18 @@ import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
 Model:
 	(imports += Import)*
+	container = Container
 	(elements += Type)*;
 	
 Import :
 	'import' importURI=STRING;
 	
+Container:
+	"container" "{"
+		"domainModel" domainModel = [ecore::EPackage] ";"
+		"element" element = [ecore::EClass] ";"
+	"}";
+
 Type:
 	Node | Edge;
 

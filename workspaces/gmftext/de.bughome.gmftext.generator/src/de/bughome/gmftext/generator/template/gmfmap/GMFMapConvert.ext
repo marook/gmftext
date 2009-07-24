@@ -22,9 +22,11 @@ import gmfgraph;
 import mappings;
 import gmfText;
 
-create Mapping toMapping(Model model, ToolRegistry toolRegistry, gmfgraph::Canvas canvas):
-	setDiagram(toCanvasMapping(toolRegistry, canvas));
+create Mapping toMapping(gmfText::Model model, ToolRegistry toolRegistry, gmfgraph::Canvas canvas):
+	setDiagram(toCanvasMapping(model, toolRegistry, canvas));
 
-create mappings::CanvasMapping toCanvasMapping(tooldef::ToolRegistry toolRegistry, gmfgraph::Canvas canvas):
+create mappings::CanvasMapping toCanvasMapping(gmfText::Model model, tooldef::ToolRegistry toolRegistry, gmfgraph::Canvas canvas):
 	setPalette(toolRegistry.palette) ->
-	setDiagramCanvas(canvas);
+	setDiagramCanvas(canvas) ->
+	setDomainModel(model.container.domainModel) ->
+	setElement(model.container.element);
