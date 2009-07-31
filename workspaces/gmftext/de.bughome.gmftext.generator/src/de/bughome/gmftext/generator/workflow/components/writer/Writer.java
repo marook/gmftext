@@ -104,8 +104,11 @@ public class Writer extends AbstractWorkflowComponent {
 			
 			return uri;
 		}
+		else if("platform".equalsIgnoreCase(scheme)){
+			return uri;
+		}
 		
-		logger.warn("Can't convert URI to file URI: " + uri);
+		logger.warn("Can't convert URI to GMF URI: " + uri);
 		
 		return uri;
 	}
