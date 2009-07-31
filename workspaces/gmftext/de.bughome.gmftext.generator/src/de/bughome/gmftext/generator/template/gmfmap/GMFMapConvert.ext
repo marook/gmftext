@@ -29,4 +29,4 @@ create mappings::CanvasMapping toCanvasMapping(gmfText::Model model, tooldef::To
 	setPalette(toolRegistry.palette) ->
 	setDiagramCanvas(canvas) ->
 	setDomainModel(model.container.domainModel) ->
-	setElement(model.container.element);
+	setDomainMetaElement(model.container.element);
