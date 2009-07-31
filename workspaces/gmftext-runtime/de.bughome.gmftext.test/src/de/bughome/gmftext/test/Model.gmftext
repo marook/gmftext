@@ -17,7 +17,12 @@
  * along with gmftext.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import "classpath:/de/bughome/gmftext/test/SampleDsl.ecore"
+import "platform:/resource/de.bughome.gmftext.test.sample_dsl/src-gen/de/bughome/gmftext/test/SampleDsl.ecore"
+
+container {
+	domainModel sampleDsl;
+	element Model;
+}
 
 node Ladida {
 	binding class { eclass Entity }
