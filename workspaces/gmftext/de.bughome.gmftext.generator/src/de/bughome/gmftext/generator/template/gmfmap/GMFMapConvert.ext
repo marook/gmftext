@@ -22,9 +22,11 @@ import gmfgraph;
 import mappings;
 import gmfText;
 
-create Mapping toMapping(gmfText::Model model, ToolRegistry toolRegistry, gmfgraph::Canvas canvas):
+extension de::bughome::gmftext::generator::template::gmftool::GMFToolConvert;
+
+create Mapping toMapping(gmfText::Model model, tooldef::ToolRegistry toolRegistry, gmfgraph::Canvas canvas):
 	setDiagram(toCanvasMapping(model, toolRegistry, canvas)) ->
-	model.elements.typeSelect(gmfText::Node).forAll(n | nodes.add(toTopNodeReference(n)));
+	model.elements.typeSelect(gmfText::Node).forAll(n | nodes.add(toTopNodeReference(n, toolRegistry)));
 
 create mappings::CanvasMapping toCanvasMapping(gmfText::Model model, tooldef::ToolRegistry toolRegistry, gmfgraph::Canvas canvas):
 	setPalette(toolRegistry.palette) ->
@@ -32,12 +34,15 @@ create mappings::CanvasMapping toCanvasMapping(gmfText::Model model, tooldef::To
 	setDomainModel(model.container.domainModel) ->
 	setDomainMetaElement(model.container.element);
 
-create mappings::TopNodeReference toTopNodeReference(gmfText::Node node):
+create mappings::TopNodeReference toTopNodeReference(gmfText::Node node, tooldef::ToolRegistry toolRegistry):
 	setUpBinding(this, node.binding) ->
-	setOwnedChild(toNodeMapping(node, node.binding));
+	setOwnedChild(toNodeMapping(node, node.binding, toolRegistry));
 	
 void setUpBinding(mappings::TopNodeReference topNodeReference, gmfText::ClassNodeBinding binding):
 	topNodeReference.setContainmentFeature(binding.containmentFeature);
 
-create mappings::NodeMapping toNodeMapping(gmfText::Node node, gmfText::ClassNodeBinding binding):
-	setDomainMetaElement(binding.ecoreClass);
+create mappings::NodeMapping toNodeMapping(gmfText::Node node, gmfText::ClassNodeBinding binding, tooldef::ToolRegistry toolRegistry):
+	setDomainMetaElement(binding.ecoreClass) ->
+	(let creationTool = toCreationTool(node.name, "Creates a new " + node.name):
+		toolRegistry.palette.tools.add(creationTool) ->
+		setTool(creationTool));
