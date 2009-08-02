@@ -17,7 +17,7 @@
  * along with gmftext.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import "platform:/resource/de.bughome.gmftext.test.sample_dsl/src-gen/de/bughome/gmftext/test/SampleDsl.ecore"
+import "platform:/resource/de.bughome.gmftext.test.sample_dsl/src-gen/de/bughome/gmftext/test/SampleDsl.ecore";
 
 container {
 	domainModel sampleDsl;
@@ -25,5 +25,8 @@ container {
 }
 
 node Ladida {
-	binding class { eclass Entity }
+	binding class {
+		eclass Entity;
+		containmentFeature elements;
+	}
 }
