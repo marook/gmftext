@@ -25,14 +25,7 @@ create Canvas toCanvas(Model model):
 	figures.add(toFigureGallery(this, model));
 	
 create FigureGallery toFigureGallery(Canvas c, Model model):
-	setName("Default") ->
-	model.elements.forAll(t | createFigure(c, this, t));
-
-Void createFigure(Canvas c, FigureGallery fg, Type t):
-	let fd = toFigureDescriptor(t):
-		fg.descriptors.add(fd) ->
-		fd.setActualFigure(toFigure(t)) ->
-		c.nodes.add(toAnchor(t, fd));
+	setName("Default");
 
 create FigureDescriptor toFigureDescriptor(Type t):
 	setName(t.name + 'Figure');
