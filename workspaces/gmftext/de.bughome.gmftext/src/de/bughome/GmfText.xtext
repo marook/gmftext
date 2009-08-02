@@ -29,7 +29,7 @@ Model:
 	(elements += Type)*;
 	
 Import :
-	'import' importURI=STRING;
+	'import' importURI=STRING ";";
 	
 Container:
 	"container" "{"
@@ -50,12 +50,13 @@ NodeBinding:
 	
 ClassNodeBinding:
 	"class" "{"
-		"eclass" ecoreClass = [ecore::EClass]
+		"eclass" ecoreClass = [ecore::EClass] ";"
+		"containmentFeature" containmentFeature = [ecore::EReference] ";"
 	"}";
 	
 Edge:
 	"edge" name = ID "{"
-		"binding" binding = EdgeBinding
+		"binding" binding = EdgeBinding ";"
 	"}";
 
 EdgeBinding:
