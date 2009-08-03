@@ -56,9 +56,13 @@ create mappings::NodeMapping toNodeMapping(
 	(let creationTool = toCreationTool(node.name, "Creates a new " + node.name):
 		toolRegistry.palette.tools.add(creationTool) ->
 		setTool(creationTool)) ->
-	(let fd = toFigureDescriptor(node):
-		defaultFigureGallery.descriptors.add(fd) ->
-		fd.setActualFigure(toFigure(node)) ->
-		(let anchor = toAnchor(node, fd):
-			canvas.nodes.add(anchor) ->
-			setDiagramNode(anchor)));
+	(let labelFigure = (isNameLabelEnabled(binding) ? (createLabel(node, getNameLabelAttributes(binding).first())) : (null)):
+		(let fd = toFigureDescriptor(node, labelFigure):
+			defaultFigureGallery.descriptors.add(fd) ->
+			fd.setActualFigure(toFigure(node, labelFigure)) ->
+			(let anchor = toAnchor(node, fd):
+				canvas.nodes.add(anchor) ->
+				setDiagramNode(anchor)
+			)
+		)
+	);

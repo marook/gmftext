@@ -17,6 +17,7 @@
  * along with gmftext.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+import ecore;
 import gmfgraph;
 import gmfText;
 
@@ -27,12 +28,33 @@ create Canvas toCanvas(Model model):
 create FigureGallery toFigureGallery(Canvas c, Model model):
 	setName("Default");
 
-create FigureDescriptor toFigureDescriptor(Type t):
-	setName(t.name + 'Figure');
+create FigureDescriptor toFigureDescriptor(Type t, gmfgraph::Figure labelFigure):
+	setName(t.name + 'Figure') ->
+	(if(labelFigure != null) then (accessors.add(createChildAccess(labelFigure))));
 
-create RoundedRectangle toFigure(gmfText::Node node):
-	setName(node.name + 'Figure');
+create RoundedRectangle toFigure(gmfText::Node node, gmfgraph::Figure labelFigure):
+	setName(node.name + 'Figure') ->
+	(if(labelFigure != null) then (children.add(labelFigure)));
 
 create gmfgraph::Node toAnchor(gmfText::Node node, FigureDescriptor fd):
 	setName(node.name) ->
 	setFigure(fd);
+
+ecore::EAttribute getNameLabelAttributes(gmfText::ClassNodeBinding b):
+	b.ecoreClass.eAllAttributes.select(a | a.name == "name");
+
+Boolean isNameLabelEnabled(gmfText::ClassNodeBinding b):
+	!getNameLabelAttributes(b).isEmpty;
+
+create gmfgraph::Label createLabel(gmfText::Node o, ecore::EAttribute a):
+	/*
+	 * TODO replace method parameter type Node with ecore::EObject
+	 *
+	 * right now it seems like the super class hierarchy of gmfText::Node is not
+	 * available.
+	 */
+	setName(o.name + "NameFigure") ->
+	setText("<..>");
+
+create gmfgraph::ChildAccess createChildAccess(gmfgraph::Figure f):
+	setFigure(f);
