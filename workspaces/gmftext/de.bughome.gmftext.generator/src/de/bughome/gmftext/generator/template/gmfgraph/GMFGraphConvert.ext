@@ -21,6 +21,8 @@ import ecore;
 import gmfgraph;
 import gmfText;
 
+extension de::bughome::gmftext::generator::template::util::ObjectRegistry;
+
 create Canvas toCanvas(Model model):
 	setName("DefaultCanvas") ->
 	figures.add(toFigureGallery(this, model));
@@ -30,7 +32,7 @@ create FigureGallery toFigureGallery(Canvas c, Model model):
 
 create FigureDescriptor toFigureDescriptor(Type t, gmfgraph::Figure labelFigure):
 	setName(t.name + 'Figure') ->
-	(if(labelFigure != null) then (accessors.add(createChildAccess(labelFigure))));
+	(if(labelFigure != null) then (accessors.add(setObject(t, 'gmf.graph.convert.label.figure.child_access', createChildAccess(labelFigure)))));
 
 create RoundedRectangle toFigure(gmfText::Node node, gmfgraph::Figure labelFigure):
 	setName(node.name + 'Figure') ->

@@ -1,0 +1,30 @@
+/*
+ * Copyright 2009 Markus Pielmeier
+ *
+ * This file is part of gmftext.
+ *
+ * gmftext is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * gmftext is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with gmftext.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+Object getObject(String key) :
+	JAVA de.bughome.gmftext.generator.template.util.ObjectRegistry.getObject(java.lang.String);
+	
+Object setObject(String key, Object object):
+	JAVA de.bughome.gmftext.generator.template.util.ObjectRegistry.setObject(java.lang.String, java.lang.Object);
+
+Object getObject(Object target, String key):
+	JAVA de.bughome.gmftext.generator.template.util.ObjectRegistry.getObject(java.lang.Object, java.lang.String);
+
+Object setObject(Object target, String key, Object object):
+	JAVA de.bughome.gmftext.generator.template.util.ObjectRegistry.setObject(java.lang.Object, java.lang.String, java.lang.Object);
