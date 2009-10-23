@@ -22,11 +22,11 @@ import gmfgraph;
 import gmfText;
 
 create Canvas toCanvas(Model model):
-	setName("Default") ->
+	setName("DefaultCanvas") ->
 	figures.add(toFigureGallery(this, model));
 	
 create FigureGallery toFigureGallery(Canvas c, Model model):
-	setName("Default");
+	setName("DefaultGallery");
 
 create FigureDescriptor toFigureDescriptor(Type t, gmfgraph::Figure labelFigure):
 	setName(t.name + 'Figure') ->
